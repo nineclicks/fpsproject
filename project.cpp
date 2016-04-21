@@ -8,7 +8,6 @@ using namespace std;
 
 int main()
 {
-    
     Game game;
     View view(&game);
     Input input(&game, &view);
@@ -17,10 +16,10 @@ int main()
     
     while(!done) {
         done = input.CheckInput();
-        
+        game.Move();
+        view.Render();
     }
     view.cleanupXWindows();
-    
 
     return 0;
 }

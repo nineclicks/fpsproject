@@ -12,7 +12,7 @@ int Input::CheckInput()
     while(XPending(dpy)) {
         XEvent e;
         XNextEvent(dpy, &e);
-        //check_mouse(&e);
+        CheckMouse(&e);
         int done = CheckKeys(&e);
         if (done == 1)
             return 1;
@@ -79,6 +79,7 @@ void Input::CheckMouse(XEvent *e)
             return;
         }
     }
+    
     int dx = e->xbutton.x - (view->GetWidth() / 2);
     int dy = e->xbutton.y - (view->GetHeight() / 2);
     game->direction.x +=(float) dx / 2000.0;

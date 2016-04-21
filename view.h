@@ -9,6 +9,8 @@
 #include <cstdlib>
 #include "game.h"
 
+#define PI 3.14159
+
 class View
 {
 private:
@@ -35,7 +37,10 @@ public:
     Display *GetDisplay();
     int GetWidth();
     int GetHeight();
-    
+    void Render();
+    void SwitchTo3D();
+    void SwitchTo2D();
+    void HUD();
 };
 
 

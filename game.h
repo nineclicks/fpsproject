@@ -18,6 +18,7 @@ public:
     float velocityY;
     
     Game();
+    void Move();
     
 };
 
