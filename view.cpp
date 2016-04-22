@@ -5,7 +5,8 @@ View::View(Game *g)
     InitWindow();
     InitOpenGL();
     game = g;
-    zoom = 1.5f;
+    depth = 1.5f;
+    zoom = 0;
 }
 
 int View::GetWidth()
@@ -159,9 +160,6 @@ Display *View::GetDisplay()
 
 void View::Render()
 {
-    std::cout << "pos " << game->position.x
-    << " " << game->position.y
-    << " " << game->position.z << std::endl;
 	float rotx = game->direction.x;
 	float roty = game->direction.y;
 	if (zoom == 1 && depth < 0.45) {
@@ -216,7 +214,7 @@ void View::Render()
     for (int i = 0; i < 6; i++) {
 		glColor3f(c[i].x,c[i].y,c[i].z);
 		glBegin(GL_POLYGON);
-		Vec N = Normal(v[verts[i][0]],v[verts[i][1]],v[verts[i][2]]);
+		Vec N = -Normal(v[verts[i][0]],v[verts[i][1]],v[verts[i][2]]);
 		glNormal3f(N.x,N.y,N.z);
 		for (int j = 0; j < 4; j++){
 			glVertex3f(v[verts[i][j]].x, v[verts[i][j]].y, v[verts[i][j]].z);
